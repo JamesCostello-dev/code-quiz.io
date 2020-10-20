@@ -1,35 +1,5 @@
 const body = document.body;
 
-let container = document.createElement('div');
-body.appendChild(container);
-
-let header1 = document.createElement('h1');
-container.appendChild(header1);
-
-let header2 = document.createElement('h2');
-header2.textContent = 'You will have 60 seconds to answer all the questions.  Click start when ready.';
-container.appendChild(header2);
-
-let button = document.createElement('button');
-button.textContent = 'Start';
-body.appendChild(button);
-
-let buttonDiv = document.createElement('div');
-body.appendChild(buttonDiv);
-
-let button1 = document.createElement('hide');
-buttonDiv.appendChild(button1)
-
-let button2 = document.createElement('hide');
-buttonDiv.appendChild(button2)
-
-let button3 = document.createElement('hide');
-buttonDiv.appendChild(button3)
-
-let button4 = document.createElement('hide');
-buttonDiv.appendChild(button4)
-
-
 const questions = [
   {
     question: "Commonly used data types DO NOT include:",
@@ -58,68 +28,74 @@ const questions = [
   }
 ];
 
+let i = 0
+let score = 0;
 
-const select = document.querySelector('button');
+const time = document.getElementById('time');
+
+const title = document.getElementById('title');
+
+const start = document.getElementById('start');
+
+const opt0 = document.getElementById('opt0');
+const opt1 = document.getElementById('opt1');
+const opt2 = document.getElementById('opt2');
+const opt3 = document.getElementById('opt3');
 
 
-function quiz () {
-  
-  for (let i = 0; i < questions.length; i++) {
-    
-    let newheader2 = document.createElement('h2');
-    newheader2.innerText = questions[i].question;
-    header2.replaceWith(newheader2);
-    
-    let newbutton1 = document.createElement('button');
-    newbutton1.innerText = questions[i].option[0];
-    button1.replaceWith(newbutton1);
-    
-    let newbutton2 = document.createElement('button');
-    newbutton2.innerText = questions[i].option[1];
-    button2.replaceWith(newbutton2);
-    
-    let newbutton3 = document.createElement('button');
-    newbutton3.innerText = questions[i].option[2];
-    button3.replaceWith(newbutton3);
-    
-    let newbutton4 = document.createElement('button');
-    newbutton4.innerText = questions[i].option[3];
-    button4.replaceWith(newbutton4);
-    
-    let hide = document.createElement('hide');
-    button.replaceWith(hide);
+const quiz = document.addEventListener('click', function go () {
 
+    countdown();
+
+    start.remove(start);
+
+   if (i === questions.length) {
+     end;
+   } else {
+     next;
+   }
+
+});
+
+const next = document.addEventListener('click', function getNext () {
+
+  if (i < questions.length - 1) {
+    i++;
+  } else {
+    end();
   }
 
+    title.textContent = questions[i].question;
+    opt0.textContent = questions[i].option[0];
+    opt1.textContent = questions[i].option[1];
+    opt2.textContent = questions[i].option[2];
+    opt3.textContent = questions[i].option[3];
+
+});
+
+// end
+
+const end = () => {
+  alert('Quiz is over!')
 }
 
-function countdown() {
+
+const countdown = () => {
   let count = 60;
   
-  let timer = document.createElement('h1');
-  header1.replaceWith(timer);
-  
-  let timeInt = setInterval(function() {
+  let timer = setInterval(function() {
     if (count > 1) {
-      timer.textContent = count;
+      time.textContent = count;
       count--;
     } else if (count === 1) {
-      timer.textContent = count;
+      time.textContent = count;
       count--;
     } else {
-      timer.textContent = '';
-      clearInterval(timeInt);
+      time.textContent = '';
+      clearInterval(timer);
+      alert('Sorry you ran out of time!');
     }
     
   }, 1000);
   
 }
-
-
-function start () {
-  countdown();
-  quiz();
-}
-
-select.addEventListener('click', start)
-
