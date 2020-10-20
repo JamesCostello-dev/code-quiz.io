@@ -1,4 +1,4 @@
-# Code Quiz - Incomplete
+# Code Quiz
 
 ## Purpose 
 * AS A coding boot camp student
