@@ -1,3 +1,5 @@
+// assign
+
 const body = document.body;
 
 const questions = [
@@ -30,6 +32,8 @@ const questions = [
 
 let i = 0
 let score = 0;
+let count = 60;
+let store = [];
 
 const time = document.getElementById('time');
 
@@ -43,6 +47,7 @@ const opt2 = document.getElementById('opt2');
 const opt3 = document.getElementById('opt3');
 
 
+// start
 const quiz = document.addEventListener('click', function go () {
 
     countdown();
@@ -50,13 +55,14 @@ const quiz = document.addEventListener('click', function go () {
     start.remove(start);
 
    if (i === questions.length) {
-     end;
+     end();
    } else {
      next;
    }
 
 });
 
+// next
 const next = document.addEventListener('click', function getNext () {
 
   if (i < questions.length - 1) {
@@ -74,14 +80,21 @@ const next = document.addEventListener('click', function getNext () {
 });
 
 // end
-
 const end = () => {
-  alert('Quiz is over!')
+  alert('Quiz is over!' + 'You got ' + score + ' out of 5 correct!');
 }
 
+// score
+const hs = () => {
+  if (questions[i].option === questions[i].answer) {
+    score++;
+  } else {
+    count--;
+  }
+}
 
+// timer
 const countdown = () => {
-  let count = 60;
   
   let timer = setInterval(function() {
     if (count > 1) {
