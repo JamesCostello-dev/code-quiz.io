@@ -26,7 +26,7 @@ Javascript
 https://jamescostello-dev.github.io/code-quiz.io/
 
 ## Img
-<img width="880" alt="Screen Shot 2020-10-20 at 11 58 35 AM" src="https://user-images.githubusercontent.com/28774706/96631795-a6bd0a80-12cb-11eb-8f1f-aaedc5e7be61.png">
+<img width="960" alt="Screen Shot 2020-10-20 at 2 15 02 PM" src="https://user-images.githubusercontent.com/28774706/96644960-b42fc000-12de-11eb-9ba6-2e92e7004c74.png">
 
 ## Contribution 
 James Costello
