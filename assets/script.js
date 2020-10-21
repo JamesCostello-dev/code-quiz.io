@@ -30,10 +30,9 @@ const questions = [
   }
 ];
 
-let i = 0
+let i = -1;
 let score = 0;
 let count = 60;
-let store = [];
 
 const time = document.getElementById('time');
 
@@ -54,18 +53,12 @@ const quiz = document.addEventListener('click', function go () {
 
     start.remove(start);
 
-   if (i === questions.length) {
-     end();
-   } else {
-     next;
-   }
-
 });
 
 // next
 const next = document.addEventListener('click', function getNext () {
 
-  if (i < questions.length - 1) {
+  if (i < questions.length) {
     i++;
   } else {
     end();
@@ -81,7 +74,8 @@ const next = document.addEventListener('click', function getNext () {
 
 // end
 const end = () => {
-  alert('Quiz is over!' + 'You got ' + score + ' out of 5 correct!');
+  window.alert('Quiz is over! ' + 'You got ' + score + ' out of 5 correct!');
+  window.location.href = 'score.html';
 }
 
 // score
@@ -91,6 +85,14 @@ const hs = () => {
   } else {
     count--;
   }
+
+  localStorage = score;
+
+}
+
+//store
+const storage = () => {
+
 }
 
 // timer
@@ -106,7 +108,8 @@ const countdown = () => {
     } else {
       time.textContent = '';
       clearInterval(timer);
-      alert('Sorry you ran out of time!');
+      window.alert('Sorry you ran out of time!');
+      window.location.href = 'score.html';
     }
     
   }, 1000);
